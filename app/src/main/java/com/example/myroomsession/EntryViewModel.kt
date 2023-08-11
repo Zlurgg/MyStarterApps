@@ -9,6 +9,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.myroomsession.data.Entry
+import com.example.myroomsession.data.EntryRepository
 import kotlinx.coroutines.launch
 
 private const val TAG = "EntryViewModel"
@@ -59,23 +61,3 @@ class EntryViewModelFactory(private val repository: EntryRepository) : ViewModel
         throw IllegalArgumentException("Unknown ViewModel class")
     }
 }
-
-
-data class EntryUiState(
-    val entryDetails: EntryDetails = EntryDetails(),
-    val isEntryValid: Boolean = false
-)
-
-data class EntryDetails(
-    var id: Int = 0,
-    var date: String = "",
-    var mood: String = "",
-    var note: String = ""
-)
-
-fun EntryDetails.toEntry(): Entry = Entry(
-    id = id,
-    date = date,
-    mood = mood,
-    note = note
-)

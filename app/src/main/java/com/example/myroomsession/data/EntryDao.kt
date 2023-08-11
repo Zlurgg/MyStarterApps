@@ -1,4 +1,4 @@
-package com.example.myroomsession
+package com.example.myroomsession.data
 
 import androidx.room.Dao
 import androidx.room.Insert
