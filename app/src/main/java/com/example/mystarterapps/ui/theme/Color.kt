@@ -1,4 +1,4 @@
-package com.example.myroomsession.ui.theme
+package com.example.mystarterapps.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

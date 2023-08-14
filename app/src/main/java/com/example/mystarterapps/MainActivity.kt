@@ -1,9 +1,9 @@
-package com.example.myroomsession
+package com.example.mystarterapps
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import com.example.myroomsession.ui.theme.MyRoomSessionTheme
+import com.example.mystarterapps.ui.theme.MyRoomSessionTheme
 
 class MainActivity : ComponentActivity() {
     /**
@@ -18,7 +18,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyRoomSessionTheme {
-                MyRoomSessionApp(/*entryViewModel*/)
+//                RoomApp(/*entryViewModel*/)
+                NavigationApp()
             }
         }
     }

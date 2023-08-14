@@ -1,6 +1,6 @@
-package com.example.myroomsession.ui
+package com.example.mystarterapps.ui
 
-import com.example.myroomsession.data.Entry
+import com.example.mystarterapps.data.Entry
 
 data class EntryUiState(
     val entryDetails: EntryDetails = EntryDetails(),

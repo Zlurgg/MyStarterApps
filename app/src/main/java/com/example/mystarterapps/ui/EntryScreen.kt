@@ -1,4 +1,4 @@
-package com.example.myroomsession.ui
+package com.example.mystarterapps.ui
 
 import android.content.Context
 import androidx.compose.foundation.layout.Arrangement
@@ -34,11 +34,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.myroomsession.data.Entry
-import com.example.myroomsession.data.EntryApplication
-import com.example.myroomsession.util.DateUtil
+import com.example.mystarterapps.data.Entry
+import com.example.mystarterapps.data.EntryApplication
+import com.example.mystarterapps.util.DateUtil
 import kotlinx.coroutines.launch
-
 
 @Composable
 fun EntryScreen(
@@ -47,7 +46,7 @@ fun EntryScreen(
     context: Context = LocalContext.current,
     entryViewModel: EntryViewModel = viewModel(
         factory = EntryViewModelFactory((context.applicationContext as EntryApplication).repository)
-    )
+    ),
 ) {
     /** create view-model inside composable screen can be here or in the function variables above ^ **/
     /*    val context = LocalContext.current
@@ -56,14 +55,14 @@ fun EntryScreen(
     factory = EntryViewModelFactory((context.applicationContext as EntryApplication).repository)
 )*/
 
-    /** fetch all entries from by view-model **/
+    /** fetch all entries via the view-model **/
     val entries: List<Entry> by entryViewModel.allEntries.observeAsState(listOf())
     val coroutineScope = rememberCoroutineScope()
 
     /** create an instance of entry details **/
     val entryDetails = entryViewModel.entriesUiState.entryDetails
 
-    /** add date to the entry **/
+    /** set current date for entry **/
     val date = DateUtil().getCurrentDate()
     entryDetails.date = date
 

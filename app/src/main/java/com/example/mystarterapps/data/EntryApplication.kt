@@ -1,4 +1,4 @@
-package com.example.myroomsession.data
+package com.example.mystarterapps.data
 
 import android.app.Application
 import kotlinx.coroutines.CoroutineScope

@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "MyRoomSession"
+rootProject.name = "MyStarterApps"
 include(":app")
  

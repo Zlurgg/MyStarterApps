@@ -1,4 +1,4 @@
-package com.example.myroomsession.util
+package com.example.mystarterapps.util
 
 import java.util.Calendar
 class DateUtil {

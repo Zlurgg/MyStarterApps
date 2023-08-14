@@ -1,4 +1,4 @@
-package com.example.myroomsession
+package com.example.mystarterapps
 
 import org.junit.Test
 

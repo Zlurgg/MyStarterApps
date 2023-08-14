@@ -16,13 +16,13 @@ kotlin {
 }
 
 android {
-    namespace = "com.example.myroomsession"
-    compileSdk = 34
+    namespace = "com.example.mystarterapps"
+    compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.example.myroomsession"
+        applicationId = "com.example.mystarterapps"
         minSdk = 27
-        targetSdk = 34
+        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
 
@@ -97,7 +97,7 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
     //Nav
-    implementation("androidx.navigation:navigation-compose:2.7.0")
+    implementation("androidx.navigation:navigation-compose:2.6.0")
 
     //Compose Nav
     implementation("io.github.raamcosta.compose-destinations:core:1.1.2-beta")
