@@ -1,4 +1,4 @@
-package com.example.myroomsession
+package com.example.myroomsession.ui
 
 import com.example.myroomsession.data.Entry
 

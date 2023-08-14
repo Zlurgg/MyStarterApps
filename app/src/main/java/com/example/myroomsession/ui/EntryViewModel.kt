@@ -1,4 +1,4 @@
-package com.example.myroomsession
+package com.example.myroomsession.ui
 
 import android.util.Log
 import androidx.compose.runtime.getValue
@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 
 private const val TAG = "EntryViewModel"
 
-class EntryViewModel(val entryRepository: EntryRepository): ViewModel() {
+class EntryViewModel(private val entryRepository: EntryRepository): ViewModel() {
 
     var entriesUiState by mutableStateOf(EntryUiState())
         private set
