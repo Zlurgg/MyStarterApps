@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import com.example.mystarterapps.ui.theme.MyRoomSessionTheme
+import com.ramcosta.composedestinations.DestinationsNavHost
 
 class MainActivity : ComponentActivity() {
     /**
@@ -19,7 +20,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyRoomSessionTheme {
 //                RoomApp(/*entryViewModel*/)
-                NavigationApp()
+                DestinationsNavHost(navGraph = NavGraphs.root)
             }
         }
     }

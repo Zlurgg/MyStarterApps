@@ -11,72 +11,69 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import com.example.mystarterapps.data.Entry
+import com.example.mystarterapps.data.User
+import com.example.mystarterapps.destinations.PostScreenDestination
+import com.example.mystarterapps.destinations.ProfileScreenDestination
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import java.time.LocalDateTime
 
+@Destination(start = true)
 @Composable
-fun NavigationApp() {
-    @Destination(start = true)
-    @Composable
-    fun LoginScreen(
-        navigator: DestinationsNavigator
+fun LoginScreen(
+    navigator: DestinationsNavigator
+) {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Column(
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text("Login Screen")
-            Button(onClick = {
-//                navigator.navigate(
-//                    ProfileScreenDestination(
-//                        Entry(
-//                            id = 99,
-//                            mood = "good",
-//                            note = "happy",
-//                            date = LocalDateTime.now().toString(),
-//                        )
-//                    )
-//                )
-            }) {
-                Text("Go to Profile Screen")
-            }
+        Text("Login Screen")
+        Button(onClick = {
+                navigator.navigate(
+                    ProfileScreenDestination(
+                        User(
+                            name = "Chris P. Bacon",
+                            id = "userid",
+                            created = LocalDateTime.now()
+                        )
+                    )
+                )
+        }) {
+            Text("Go to Profile Screen")
         }
     }
+}
 
-    @Destination
-    @Composable
-    fun ProfileScreen(
-        navigator: DestinationsNavigator,
-        entry: Entry
+@Destination
+@Composable
+fun ProfileScreen(
+    navigator: DestinationsNavigator,
+    user: User
+) {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Column(
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text("Profile Screen: $entry", textAlign = TextAlign.Center)
-            Button(onClick = {
-//                navigator.navigate(
-//                    ProfileScreenDestination()
-//                )
-            }) {
-                Text("Go to Post Screen")
-            }
+        Text("Profile Screen: $user", textAlign = TextAlign.Center)
+        Button(onClick = {
+            navigator.navigate(PostScreenDestination())
+        }) {
+            Text("Go to Post Screen")
         }
     }
+}
 
-    @Destination
-    @Composable
-    fun PostScreen(
-        showOnlyPostsByUser: Boolean = false
+@Destination
+@Composable
+fun PostScreen(
+    showOnlyPostsByUser: Boolean = false
+) {
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
     ) {
-        Box(
-            modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(text = "Post Screen, $showOnlyPostsByUser")
-        }
+        Text(text = "Post Screen, $showOnlyPostsByUser")
     }
 }

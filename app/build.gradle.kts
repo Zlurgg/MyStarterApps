@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id ("kotlin-parcelize")
     id("com.google.devtools.ksp")
 }
 
@@ -97,7 +98,7 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
     //Nav
-    implementation("androidx.navigation:navigation-compose:2.6.0")
+    implementation ("androidx.navigation:navigation-compose:2.4.0-rc01")
 
     //Compose Nav
     implementation("io.github.raamcosta.compose-destinations:core:1.1.2-beta")
