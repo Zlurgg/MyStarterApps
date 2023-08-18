@@ -1,6 +1,6 @@
 package com.example.mystarterapps.ui
 
-import com.example.mystarterapps.data.Entry
+import com.example.mystarterapps.data.JournalEntry
 
 data class EntryUiState(
     val entryDetails: EntryDetails = EntryDetails(),
@@ -14,7 +14,7 @@ data class EntryDetails(
     var note: String = ""
 )
 
-fun EntryDetails.toEntry(): Entry = Entry(
+fun EntryDetails.toEntry(): JournalEntry = JournalEntry(
     id = id,
     date = date,
     mood = mood,

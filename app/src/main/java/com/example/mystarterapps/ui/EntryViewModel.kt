@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.mystarterapps.data.Entry
+import com.example.mystarterapps.data.JournalEntry
 import com.example.mystarterapps.data.EntryRepository
 import kotlinx.coroutines.launch
 
@@ -25,10 +25,10 @@ class EntryViewModel(private val entryRepository: EntryRepository): ViewModel() 
             EntryUiState(entryDetails = entryDetails, isEntryValid = validateInput(entryDetails))
     }
 
-    val allEntries: LiveData<List<Entry>> = entryRepository.allEntries.asLiveData()
+    val allEntries: LiveData<List<JournalEntry>> = entryRepository.allEntries.asLiveData()
 
-    fun insert(entry: Entry) = viewModelScope.launch {
-        entryRepository.insert(entry)
+    fun insert(journalEntry: JournalEntry) = viewModelScope.launch {
+        entryRepository.insert(journalEntry)
     }
 
     private fun validateInput(uiState: EntryDetails = entriesUiState.entryDetails): Boolean {

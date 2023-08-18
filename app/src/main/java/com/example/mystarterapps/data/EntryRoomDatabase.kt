@@ -8,7 +8,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-@Database(entities = [Entry::class], version = 1, exportSchema = false)
+@Database(entities = [JournalEntry::class], version = 1, exportSchema = false)
 abstract class EntryRoomDatabase: RoomDatabase() {
 
     abstract fun entryDao(): EntryDao
@@ -55,7 +55,7 @@ suspend fun populateDatabase(entryDao: EntryDao) {
     entryDao.deleteAll()
 
     // Add sample words.
-    val entry = Entry(1, "sample mood", "sample note", "1973-01-01")
-    entryDao.insert(entry)
+    val journalEntry = JournalEntry(1, "sample mood", "sample note", "1973-01-01")
+    entryDao.insert(journalEntry)
 }
 

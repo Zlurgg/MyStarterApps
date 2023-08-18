@@ -34,7 +34,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.mystarterapps.data.Entry
+import com.example.mystarterapps.data.JournalEntry
 import com.example.mystarterapps.data.EntryApplication
 import com.example.mystarterapps.util.DateUtil
 import kotlinx.coroutines.launch
@@ -56,7 +56,7 @@ fun EntryScreen(
 )*/
 
     /** fetch all entries via the view-model **/
-    val entries: List<Entry> by entryViewModel.allEntries.observeAsState(listOf())
+    val entries: List<JournalEntry> by entryViewModel.allEntries.observeAsState(listOf())
     val coroutineScope = rememberCoroutineScope()
 
     /** create an instance of entry details **/
@@ -110,7 +110,7 @@ fun EntryScreen(
                 items(
                     entries
                 ) {
-                    DisplayEntriesCard(entry = it)
+                    DisplayEntriesCard(journalEntry = it)
                 }
             }
         }
@@ -230,7 +230,7 @@ fun SaveCard(
 
 
 @Composable
-fun DisplayEntriesCard(entry: Entry) {
+fun DisplayEntriesCard(journalEntry: JournalEntry) {
     Card(
         modifier = Modifier
             .padding(4.dp)
@@ -246,28 +246,28 @@ fun DisplayEntriesCard(entry: Entry) {
                 .padding(4.dp),
         ) {
             Text(
-                text = entry.id.toString() + " | ",
+                text = journalEntry.id.toString() + " | ",
                 style = TextStyle(
                     color = Color.Black,
                     fontSize = 15.sp
                 ),
             )
             Text(
-                text = entry.date + " | ",
+                text = journalEntry.date + " | ",
                 style = TextStyle(
                     color = Color.Black,
                     fontSize = 15.sp
                 )
             )
             Text(
-                text = entry.mood + " | ",
+                text = journalEntry.mood + " | ",
                 style = TextStyle(
                     color = Color.Black,
                     fontSize = 15.sp
                 )
             )
             Text(
-                text = entry.note,
+                text = journalEntry.note,
                 style = TextStyle(
                     color = Color.Black,
                     fontSize = 15.sp

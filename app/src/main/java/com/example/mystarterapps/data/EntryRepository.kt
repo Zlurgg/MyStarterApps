@@ -5,14 +5,14 @@ import kotlinx.coroutines.flow.Flow
 
 class EntryRepository(private val entryDao: EntryDao) {
 
-    val allEntries: Flow<List<Entry>> = entryDao.getEntriesOrderedByDate()
+    val allEntries: Flow<List<JournalEntry>> = entryDao.getEntriesOrderedByDate()
 
-    fun getEntryFromDate(date: String): Entry = entryDao.getEntryFromDate(date)
+    fun getEntryFromDate(date: String): JournalEntry = entryDao.getEntryFromDate(date)
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    suspend fun insert(entry: Entry) {
-        entryDao.insert(entry)
+    suspend fun insert(journalEntry: JournalEntry) {
+        entryDao.insert(journalEntry)
     }
 
 }
