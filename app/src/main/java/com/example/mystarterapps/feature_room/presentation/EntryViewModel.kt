@@ -1,4 +1,4 @@
-package com.example.mystarterapps.ui
+package com.example.mystarterapps.feature_room.presentation
 
 import android.util.Log
 import androidx.compose.runtime.getValue
@@ -9,8 +9,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.mystarterapps.data.JournalEntry
-import com.example.mystarterapps.data.EntryRepository
+import com.example.mystarterapps.feature_room.data.JournalEntry
+import com.example.mystarterapps.feature_room.data.EntryRepository
 import kotlinx.coroutines.launch
 
 private const val TAG = "EntryViewModel"

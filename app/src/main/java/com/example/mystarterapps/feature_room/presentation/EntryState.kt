@@ -1,6 +1,6 @@
-package com.example.mystarterapps.ui
+package com.example.mystarterapps.feature_room.presentation
 
-import com.example.mystarterapps.data.JournalEntry
+import com.example.mystarterapps.feature_room.data.JournalEntry
 
 data class EntryUiState(
     val entryDetails: EntryDetails = EntryDetails(),

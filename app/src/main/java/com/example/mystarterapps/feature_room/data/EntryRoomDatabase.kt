@@ -1,4 +1,4 @@
-package com.example.mystarterapps.data
+package com.example.mystarterapps.feature_room.data
 
 import android.content.Context
 import androidx.room.Database

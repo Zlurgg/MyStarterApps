@@ -1,4 +1,4 @@
-package com.example.mystarterapps.data
+package com.example.mystarterapps.feature_room.data
 
 import androidx.annotation.WorkerThread
 import kotlinx.coroutines.flow.Flow

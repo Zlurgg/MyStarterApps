@@ -3,6 +3,7 @@ package com.example.mystarterapps
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import com.example.mystarterapps.feature_room.RoomApp
 import com.example.mystarterapps.ui.theme.MyRoomSessionTheme
 import com.ramcosta.composedestinations.DestinationsNavHost
 
@@ -19,8 +20,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyRoomSessionTheme {
-//                RoomApp(/*entryViewModel*/)
-                DestinationsNavHost(navGraph = NavGraphs.root)
+                RoomApp(/*entryViewModel*/)
+//                DestinationsNavHost(navGraph = NavGraphs.root)
             }
         }
     }
