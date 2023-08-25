@@ -5,7 +5,6 @@
     <!--android:name=".feature_room.data.EntryApplication"-->
     <!--android:name=".feature_dagger_hilt_vm.MyApp"-->
     <application
-        android:name=".feature_dagger_hilt_vm.MyApp"
         android:enableOnBackInvokedCallback="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -17,7 +16,7 @@
         android:theme="@style/Theme.MyRoomSession"
         tools:targetApi="tiramisu">
         <activity
-            android:name=".feature_dagger_hilt_vm.MainActivity"
+            android:name=".feature_dictionary.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.MyRoomSession">

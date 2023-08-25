@@ -1,4 +1,4 @@
-package com.example.mystarterapps.common
+package com.example.mystarterapps.core.util
 
 import java.util.Calendar
 class DateUtil {

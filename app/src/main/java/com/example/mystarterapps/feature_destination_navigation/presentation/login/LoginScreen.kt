@@ -10,7 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.example.mystarterapps.feature_destination_navigation.presentation.destinations.ProfileScreenDestination
 import com.example.mystarterapps.feature_room.data.JournalEntry
-import com.example.mystarterapps.common.DateUtil
+import com.example.mystarterapps.core.util.DateUtil
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 

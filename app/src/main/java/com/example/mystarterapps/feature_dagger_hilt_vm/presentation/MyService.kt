@@ -15,6 +15,7 @@ class MyService: Service() {
 
     override fun onCreate() {
         super.onCreate()
+//        repository.doNetworkCall()
     }
 
     override fun onBind(p0: Intent?): IBinder? {
