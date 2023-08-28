@@ -7,7 +7,7 @@ import com.example.mystarterapps.feature_dictionary.domain.model.Meaning
 import com.google.gson.reflect.TypeToken
 
 @ProvidedTypeConverter
-class Convertors(
+class Converters(
     private val jsonParser: JsonParser
 ) {
     @TypeConverter

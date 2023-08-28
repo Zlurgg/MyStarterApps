@@ -2,9 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <!-- change the name and the main activity to run different feature branches
+        also un-comment @HiltAndroidApp in the App class and invalidate and restart project
+     -->
+
     <!--android:name=".feature_room.data.EntryApplication"-->
     <!--android:name=".feature_dagger_hilt_vm.MyApp"-->
+    <!--android:name=".feature_dictionary.DictionaryApp"-->
+
     <application
+        android:name=".feature_dictionary.DictionaryApp"
         android:enableOnBackInvokedCallback="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"

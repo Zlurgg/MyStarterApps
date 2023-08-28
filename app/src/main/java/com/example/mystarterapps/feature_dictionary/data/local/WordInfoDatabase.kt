@@ -9,7 +9,7 @@ import com.example.mystarterapps.feature_dictionary.data.local.entity.WordInfoEn
     entities = [WordInfoEntity::class],
     version = 1
 )
-@TypeConverters(Convertors::class)
+@TypeConverters(Converters::class)
 abstract class WordInfoDatabase: RoomDatabase() {
     abstract val dao: WordInfoDao
 }
