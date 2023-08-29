@@ -1,4 +1,4 @@
-package com.example.mystarterapps.feature_landing_page
+package com.example.mystarterapps
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

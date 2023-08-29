@@ -3,6 +3,7 @@ package com.example.mystarterapps.feature_cryptocurency_app.presentation
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -10,7 +11,8 @@ import com.example.mystarterapps.feature_cryptocurency_app.presentation.coin_det
 import com.example.mystarterapps.feature_cryptocurency_app.presentation.coin_list.CoinListScreen
 
 @Composable
-fun CryptocurrencyApp() {
+fun CryptocurrencyApp(
+) {
     Surface(color = MaterialTheme.colorScheme.background) {
         val navController = rememberNavController()
         NavHost(
