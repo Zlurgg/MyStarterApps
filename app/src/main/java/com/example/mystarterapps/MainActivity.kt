@@ -1,8 +1,9 @@
-package com.example.mystarterapps.feature_room
+package com.example.mystarterapps
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import com.example.mystarterapps.feature_landing_page.LandingPageApp
 import com.example.mystarterapps.ui.theme.MyStarterAppsTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -12,7 +13,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyStarterAppsTheme {
-                RoomApp()
+                LandingPageApp()
             }
         }
     }

@@ -4,16 +4,19 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
-    <!-- change the name and the main activity to run different feature branches
-        also un-comment @HiltAndroidApp in the App class and invalidate and restart project
+    <!--
+        Change the name and the main activity to run different feature packages
+        not included in the landing page set up (mostly tutorials that don't implement dagger hilt
+        or use a different style.
+
+        android:name=".feature_room.data.EntryApplication"
+        android:name=".feature_dagger_hilt_vm.MyApp"
+
+        MainActivity also needs changing to the feature package one below
      -->
 
-    <!--android:name=".feature_room.data.EntryApplication"-->
-    <!--android:name=".feature_dagger_hilt_vm.MyApp"-->
-    <!--android:name=".feature_dictionary.DictionaryApp"-->
-
     <application
-        android:name=".feature_cryptocurency_app.CoinApplication"
+        android:name=".MyStarterAppsApplication"
         android:enableOnBackInvokedCallback="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -22,13 +25,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyRoomSession"
+        android:theme="@style/Theme.MyStarterApps"
         tools:targetApi="tiramisu">
         <activity
-            android:name=".feature_cryptocurency_app.presentation.MainActivity"
+            android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.MyRoomSession">
+            android:theme="@style/Theme.MyStarterApps">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
