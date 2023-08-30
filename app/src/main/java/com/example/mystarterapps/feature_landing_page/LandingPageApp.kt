@@ -9,6 +9,8 @@ import com.example.mystarterapps.feature_cryptocurency_app.CryptocurrencyApp
 import com.example.mystarterapps.feature_cryptocurency_app.presentation.ui.theme.CryptocurrencyAppYTTheme
 import com.example.mystarterapps.feature_dictionary.DictionaryApp
 import com.example.mystarterapps.feature_landing_page.presentation.LandingPageScreen
+import com.example.mystarterapps.feature_note.NoteApp
+import com.example.mystarterapps.feature_note.ui.theme.NoteAppTheme
 
 @Composable
 fun LandingPageApp() {
@@ -29,8 +31,12 @@ fun LandingPageApp() {
             }
         }
         composable("calculator") {
-            CryptocurrencyAppYTTheme {
-                CalculatorApp()
+            CalculatorApp()
+
+        }
+        composable("note") {
+            NoteAppTheme {
+                NoteApp()
             }
         }
     }
