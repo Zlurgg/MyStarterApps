@@ -58,6 +58,17 @@ fun LandingPageScreen(
                     style = MaterialTheme.typography.headlineMedium
                 )
             }
+            Spacer(modifier = Modifier.padding(8.dp))
+            Button(
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(20.dp),
+                onClick = { navController.navigate("calculator") }
+            ) {
+                Text(
+                    text = "Calculator",
+                    style = MaterialTheme.typography.headlineMedium
+                )
+            }
         }
     }
 }
