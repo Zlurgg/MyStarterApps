@@ -2,11 +2,11 @@ package com.example.mystarterapps.feature_note.domain.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.mystarterapps.feature_note.ui.theme.BabyBlue
-import com.example.mystarterapps.feature_note.ui.theme.LightGreen
-import com.example.mystarterapps.feature_note.ui.theme.RedOrange
-import com.example.mystarterapps.feature_note.ui.theme.RedPink
-import com.example.mystarterapps.feature_note.ui.theme.Violet
+import com.example.mystarterapps.feature_note.presentation.ui.theme.BabyBlue
+import com.example.mystarterapps.feature_note.presentation.ui.theme.LightGreen
+import com.example.mystarterapps.feature_note.presentation.ui.theme.RedOrange
+import com.example.mystarterapps.feature_note.presentation.ui.theme.RedPink
+import com.example.mystarterapps.feature_note.presentation.ui.theme.Violet
 
 @Entity
 data class Note(

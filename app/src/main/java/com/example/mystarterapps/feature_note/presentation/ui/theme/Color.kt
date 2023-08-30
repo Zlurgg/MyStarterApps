@@ -1,4 +1,4 @@
-package com.example.mystarterapps.feature_note.ui.theme
+package com.example.mystarterapps.feature_note.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
