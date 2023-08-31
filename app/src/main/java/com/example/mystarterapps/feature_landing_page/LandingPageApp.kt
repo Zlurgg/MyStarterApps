@@ -9,6 +9,7 @@ import com.example.mystarterapps.feature_cryptocurency_app.CryptocurrencyApp
 import com.example.mystarterapps.feature_dictionary.DictionaryApp
 import com.example.mystarterapps.feature_landing_page.presentation.LandingPageScreen
 import com.example.mystarterapps.feature_note.NoteApp
+import com.example.mystarterapps.feature_timer.TimerApp
 
 @Composable
 fun LandingPageApp() {
@@ -31,6 +32,9 @@ fun LandingPageApp() {
         }
         composable("note") {
             NoteApp()
+        }
+        composable("timer") {
+            TimerApp()
         }
     }
 }

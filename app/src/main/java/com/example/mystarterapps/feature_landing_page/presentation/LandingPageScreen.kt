@@ -16,11 +16,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.mystarterapps.feature_landing_page.presentation.component.AppToRunButton
 
 @Composable
 fun LandingPageScreen(
     navController: NavController
-
 ) {
     Surface(
         modifier = Modifier.fillMaxSize()
@@ -36,50 +36,11 @@ fun LandingPageScreen(
                 style = MaterialTheme.typography.headlineLarge,
                 fontWeight = FontWeight.SemiBold
             )
-            Spacer(modifier = Modifier.padding(8.dp))
-            Button(
-                modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(20.dp),
-                onClick = { navController.navigate("dictionary") }
-            ) {
-                Text(
-                    text = "Dictionary",
-                    style = MaterialTheme.typography.headlineMedium
-                )
-            }
-            Spacer(modifier = Modifier.padding(8.dp))
-            Button(
-                modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(20.dp),
-                onClick = { navController.navigate("cryptocurrency") }
-            ) {
-                Text(
-                    text = "Cryptocurrency",
-                    style = MaterialTheme.typography.headlineMedium
-                )
-            }
-            Spacer(modifier = Modifier.padding(8.dp))
-            Button(
-                modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(20.dp),
-                onClick = { navController.navigate("calculator") }
-            ) {
-                Text(
-                    text = "Calculator",
-                    style = MaterialTheme.typography.headlineMedium
-                )
-            }
-            Spacer(modifier = Modifier.padding(8.dp))
-            Button(
-                modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(20.dp),
-                onClick = { navController.navigate("note") }
-            ) {
-                Text(
-                    text = "Note",
-                    style = MaterialTheme.typography.headlineMedium
-                )
-            }
+           AppToRunButton(navController = navController, appName = "Calculator")
+           AppToRunButton(navController = navController, appName = "Cryptocurrency")
+           AppToRunButton(navController = navController, appName = "Dictionary")
+           AppToRunButton(navController = navController, appName = "Note")
+           AppToRunButton(navController = navController, appName = "Timer")
         }
     }
 }
