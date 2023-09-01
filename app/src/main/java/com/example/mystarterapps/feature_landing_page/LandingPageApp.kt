@@ -8,6 +8,7 @@ import com.example.mystarterapps.feature_calculator.CalculatorApp
 import com.example.mystarterapps.feature_cryptocurency_app.CryptocurrencyApp
 import com.example.mystarterapps.feature_dictionary.DictionaryApp
 import com.example.mystarterapps.feature_landing_page.presentation.LandingPageScreen
+import com.example.mystarterapps.feature_meditation.MeditationApp
 import com.example.mystarterapps.feature_note.NoteApp
 import com.example.mystarterapps.feature_timer.TimerApp
 
@@ -29,6 +30,9 @@ fun LandingPageApp() {
         }
         composable("calculator") {
             CalculatorApp()
+        }
+        composable("meditation") {
+            MeditationApp()
         }
         composable("note") {
             NoteApp()

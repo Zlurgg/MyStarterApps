@@ -36,11 +36,12 @@ fun LandingPageScreen(
                 style = MaterialTheme.typography.headlineLarge,
                 fontWeight = FontWeight.SemiBold
             )
-           AppToRunButton(navController = navController, appName = "Calculator")
-           AppToRunButton(navController = navController, appName = "Cryptocurrency")
-           AppToRunButton(navController = navController, appName = "Dictionary")
-           AppToRunButton(navController = navController, appName = "Note")
-           AppToRunButton(navController = navController, appName = "Timer")
+            AppToRunButton(navController = navController, appName = "Calculator")
+            AppToRunButton(navController = navController, appName = "Cryptocurrency")
+            AppToRunButton(navController = navController, appName = "Dictionary")
+            AppToRunButton(navController = navController, appName = "Meditation")
+            AppToRunButton(navController = navController, appName = "Note")
+            AppToRunButton(navController = navController, appName = "Timer")
         }
     }
 }
