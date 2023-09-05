@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.mystarterapps.feature_landing_page.domain.model.Apps
 import com.example.mystarterapps.feature_landing_page.presentation.component.AppToRunButton
 
 @Composable
@@ -36,12 +37,9 @@ fun LandingPageScreen(
                 style = MaterialTheme.typography.headlineLarge,
                 fontWeight = FontWeight.SemiBold
             )
-            AppToRunButton(navController = navController, appName = "Calculator")
-            AppToRunButton(navController = navController, appName = "Cryptocurrency")
-            AppToRunButton(navController = navController, appName = "Dictionary")
-            AppToRunButton(navController = navController, appName = "Meditation")
-            AppToRunButton(navController = navController, appName = "Note")
-            AppToRunButton(navController = navController, appName = "Timer")
+            Apps.appNames.forEach { name ->
+                AppToRunButton(navController = navController, appName = name)
+            }
         }
     }
 }

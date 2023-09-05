@@ -71,6 +71,7 @@ dependencies {
     implementation("androidx.activity:activity-ktx:1.7.2")
     implementation("androidx.core:core-ktx:1.10.1")
     implementation("androidx.activity:activity-compose:1.7.2")
+    implementation("androidx.fragment:fragment-ktx:1.6.1")
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
 
     //Room
@@ -114,7 +115,13 @@ dependencies {
     ksp("androidx.hilt:hilt-compiler:1.0.0")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
+
+    // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
     implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.3")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    // Location Services
+    implementation("com.google.android.gms:play-services-location:20.0.0")
 }
