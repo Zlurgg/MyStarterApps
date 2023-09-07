@@ -5,12 +5,14 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.mystarterapps.feature_calculator.CalculatorApp
-import com.example.mystarterapps.feature_cryptocurency_app.CryptocurrencyApp
+import com.example.mystarterapps.feature_cryptocurrency.CryptocurrencyApp
 import com.example.mystarterapps.feature_dictionary.DictionaryApp
 import com.example.mystarterapps.feature_landing_page.presentation.LandingPageScreen
 import com.example.mystarterapps.feature_meditation.MeditationApp
 import com.example.mystarterapps.feature_note.NoteApp
+import com.example.mystarterapps.feature_stock_market.StockMarketApp
 import com.example.mystarterapps.feature_timer.TimerApp
+import com.example.mystarterapps.feature_todo_list.TodoApp
 import com.example.mystarterapps.feature_weather.WeatherApp
 import com.example.mystarterapps.feature_weather.presentation.weather.WeatherViewModel
 
@@ -19,18 +21,6 @@ fun LandingPageApp(
     viewModel: WeatherViewModel,
 ) {
     val navController = rememberNavController()
-
-/*    val apps =
-        listOf(
-            Pair(DictionaryApp(),"dictionary" ),
-            Pair(CryptocurrencyApp(),"cryptocurrency" ),
-            Pair(CalculatorApp(),"calculator" ),
-            Pair(MeditationApp(),"meditation" ),
-            Pair(NoteApp(),"note" ),
-            Pair(TimerApp(),"timer" ),
-            Pair(WeatherApp(),"weather"),
-        )*/
-
     NavHost(
         navController = navController,
         startDestination = "landing_page"
@@ -38,12 +28,6 @@ fun LandingPageApp(
         composable("landing_page") {
             LandingPageScreen(navController)
         }
-//        apps.forEach { v ->
-//            println(v.first)
-//            composable(v.second) {
-//                v.first
-//            }
-//        }
         composable("dictionary") {
             DictionaryApp()
         }
@@ -59,8 +43,14 @@ fun LandingPageApp(
         composable("note") {
             NoteApp()
         }
+        composable("stock market") {
+            StockMarketApp()
+        }
         composable("timer") {
             TimerApp()
+        }
+        composable("todo list") {
+            TodoApp()
         }
         composable("weather") {
             WeatherApp(viewModel)

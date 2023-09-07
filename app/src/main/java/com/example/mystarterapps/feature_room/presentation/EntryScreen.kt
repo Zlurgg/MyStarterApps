@@ -23,7 +23,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.mystarterapps.feature_room.data.EntryApplication
 import com.example.mystarterapps.feature_room.data.JournalEntry
-import com.example.mystarterapps.core.util.DateUtil
+import com.example.mystarterapps.common.util.DateUtil
 import com.example.mystarterapps.feature_room.presentation.components.AddMoodCard
 import com.example.mystarterapps.feature_room.presentation.components.AddNoteCard
 import com.example.mystarterapps.feature_room.presentation.components.DisplayEntriesCard

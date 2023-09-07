@@ -7,7 +7,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.example.mystarterapps.R
-import com.example.mystarterapps.feature_cryptocurency_app.presentation.ui.theme.TextWhite
+import com.example.mystarterapps.feature_cryptocurrency.presentation.ui.theme.TextWhite
 
 val gothicA1 = FontFamily(
     listOf(

@@ -1,6 +1,6 @@
 package com.example.mystarterapps.feature_dictionary.domain.use_case
 
-import com.example.mystarterapps.core.util.Resource
+import com.example.mystarterapps.common.util.Resource
 import com.example.mystarterapps.feature_dictionary.domain.model.WordInfo
 import com.example.mystarterapps.feature_dictionary.domain.repository.WordInfoRepository
 import kotlinx.coroutines.flow.Flow

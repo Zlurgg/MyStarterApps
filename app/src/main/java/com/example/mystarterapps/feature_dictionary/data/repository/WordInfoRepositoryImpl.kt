@@ -1,6 +1,6 @@
 package com.example.mystarterapps.feature_dictionary.data.repository
 
-import com.example.mystarterapps.core.util.Resource
+import com.example.mystarterapps.common.util.Resource
 import com.example.mystarterapps.feature_dictionary.data.local.WordInfoDao
 import com.example.mystarterapps.feature_dictionary.data.remote.DictionaryApi
 import com.example.mystarterapps.feature_dictionary.domain.model.WordInfo

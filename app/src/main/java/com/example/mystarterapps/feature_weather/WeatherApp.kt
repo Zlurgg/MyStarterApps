@@ -14,8 +14,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.mystarterapps.feature_cryptocurency_app.presentation.coin_detail.CoinDetailViewModel
 import com.example.mystarterapps.feature_weather.presentation.ui.theme.DarkBlue
 import com.example.mystarterapps.feature_weather.presentation.ui.theme.DeepBlue
 import com.example.mystarterapps.feature_weather.presentation.ui.theme.WeatherAppTheme
