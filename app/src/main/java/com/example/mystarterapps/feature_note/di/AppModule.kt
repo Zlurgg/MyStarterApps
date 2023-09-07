@@ -22,27 +22,27 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideNoteDatabase(app: Application): com.example.mystarterapps.feature_note.data.data_source.NoteDatabase {
+    fun provideNoteDatabase(app: Application): NoteDatabase {
         return Room.databaseBuilder(
             app,
-            com.example.mystarterapps.feature_note.data.data_source.NoteDatabase::class.java,
-            com.example.mystarterapps.feature_note.data.data_source.NoteDatabase.DATABASE_NAME
+            NoteDatabase::class.java,
+            NoteDatabase.DATABASE_NAME
         ).build()
     }
 
     @Provides
     @Singleton
-    fun providesNoteRepository(db: com.example.mystarterapps.feature_note.data.data_source.NoteDatabase): com.example.mystarterapps.feature_note.domain.repository.NoteRepository {
-        return com.example.mystarterapps.feature_note.data.repository.NoteRepositoryImpl(db.noteDao)
+    fun providesNoteRepository(db: NoteDatabase): NoteRepository {
+        return NoteRepositoryImpl(db.noteDao)
     }
 
     @Provides
     @Singleton
-    fun provideNoteUseCases(noteRepository: com.example.mystarterapps.feature_note.domain.repository.NoteRepository): NoteUseCases {
+    fun provideNoteUseCases(noteRepository: NoteRepository): NoteUseCases {
         return NoteUseCases(
             getNotes = GetNotesUseCase(repository = noteRepository),
             deleteNote = DeleteNoteUseCase(repository = noteRepository),
-            addNote = com.example.mystarterapps.feature_note.domain.use_case.AddNote(repository = noteRepository),
+            addNote = AddNote(repository = noteRepository),
             getNote = GetNote(repository = noteRepository)
         )
     }

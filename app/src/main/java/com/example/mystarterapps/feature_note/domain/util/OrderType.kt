@@ -1,6 +1,6 @@
-package com.plcoding.cleanarchitecturenoteapp.feature_note.domain.util
+package com.example.mystarterapps.feature_note.domain.util
 
 sealed class OrderType {
-    object Ascending: OrderType()
-    object Descending: OrderType()
+    data object Ascending: OrderType()
+    data object Descending: OrderType()
 }
