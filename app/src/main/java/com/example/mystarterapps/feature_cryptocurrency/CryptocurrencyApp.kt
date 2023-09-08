@@ -9,7 +9,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.mystarterapps.feature_cryptocurrency.presentation.Screen
 import com.example.mystarterapps.feature_cryptocurrency.presentation.coin_detail.CoinDetailScreen
 import com.example.mystarterapps.feature_cryptocurrency.presentation.coin_list.CoinListScreen
-import com.example.mystarterapps.feature_cryptocurrency.presentation.ui.theme.CryptocurrencyAppTheme
+import com.example.mystarterapps.feature_cryptocurrency.ui.theme.CryptocurrencyAppTheme
 
 @Composable
 fun CryptocurrencyApp(

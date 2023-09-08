@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.sp
 import com.example.mystarterapps.feature_calculator.common.CalculatorAction
 import com.example.mystarterapps.feature_calculator.common.CalculatorOperation
 import com.example.mystarterapps.feature_calculator.presentation.components.CalculatorButton
-import com.example.mystarterapps.feature_cryptocurrency.presentation.ui.theme.DarkGray
+import com.example.mystarterapps.feature_cryptocurrency.ui.theme.DarkGray
 import com.example.mystarterapps.ui.theme.Orange
 import com.example.mystarterapps.ui.theme.LightGray
 

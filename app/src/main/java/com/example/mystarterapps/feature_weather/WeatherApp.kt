@@ -14,9 +14,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.example.mystarterapps.feature_weather.presentation.ui.theme.DarkBlue
-import com.example.mystarterapps.feature_weather.presentation.ui.theme.DeepBlue
-import com.example.mystarterapps.feature_weather.presentation.ui.theme.WeatherAppTheme
+import com.example.mystarterapps.feature_weather.ui.theme.DarkBlue
+import com.example.mystarterapps.feature_weather.ui.theme.DeepBlue
+import com.example.mystarterapps.feature_weather.ui.theme.WeatherAppTheme
 import com.example.mystarterapps.feature_weather.presentation.weather.WeatherCard
 import com.example.mystarterapps.feature_weather.presentation.weather.WeatherForecast
 import com.example.mystarterapps.feature_weather.presentation.weather.WeatherViewModel

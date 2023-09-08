@@ -11,7 +11,7 @@ import androidx.navigation.navArgument
 import com.example.mystarterapps.feature_note.presentation.add_edit_note.AddEditNoteScreen
 import com.example.mystarterapps.feature_note.presentation.notes.NotesScreen
 import com.example.mystarterapps.feature_note.presentation.util.Screen
-import com.example.mystarterapps.feature_note.presentation.ui.theme.NoteAppTheme
+import com.example.mystarterapps.feature_note.ui.theme.NoteAppTheme
 
 @Composable
 fun NoteApp() {
