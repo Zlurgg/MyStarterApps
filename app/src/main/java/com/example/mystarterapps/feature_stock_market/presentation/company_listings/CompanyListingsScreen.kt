@@ -16,6 +16,7 @@ import androidx.compose.ui.modifier.modifierLocalMapOf
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.mystarterapps.feature_stock_market.presentation.company_listings.components.CompanyItem
+import com.example.mystarterapps.feature_stock_market.presentation.destinations.CompanyInfoScreenDestination
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.ramcosta.composedestinations.annotation.Destination
@@ -53,7 +54,7 @@ fun CompanyListingsScreen(
         )
         SwipeRefresh(
             state = swipeRefreshState,
-            onRefresh = { 
+            onRefresh = {
                 viewModel.onEvent(CompanyListingsEvent.Refresh)
             }
         ) {
@@ -67,7 +68,9 @@ fun CompanyListingsScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .clickable {
-                                //TODO(Navigate to detail screen)
+                                navigator.navigate(
+                                    CompanyInfoScreenDestination(company.symbol)
+                                )
                             }
                             .padding(16.dp)
                     )
@@ -80,5 +83,4 @@ fun CompanyListingsScreen(
             }
         }
     }
-    
 }

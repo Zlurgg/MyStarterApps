@@ -17,23 +17,26 @@ import javax.inject.Inject
 class CompanyInfoViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
     private val repository: StockRepository
-) : ViewModel() {
+): ViewModel() {
 
     var state by mutableStateOf(CompanyInfoState())
 
     init {
         viewModelScope.launch {
             val symbol = savedStateHandle.get<String>("symbol") ?: return@launch
-            state = state.copy(isLoading = true)
-            val companyInfoResult =  async {
-                repository.getCompanyInfo(symbol)
-            }
-            val intradayInfoResult = async {
-                repository.getIntraDayInfo(symbol)
-            }
+            println("CompanyInfoViewModel: symbol: ${symbol}")
 
-            when(val result = companyInfoResult.await()) {
+            state = state.copy(isLoading = true)
+            val companyInfoResult = async { repository.getCompanyInfo(symbol) }.await()
+            println("CompanyInfoViewModel: companyInfoResult: ${companyInfoResult.data}")
+            val intradayInfoResult = async { repository.getIntradayInfo(symbol) }.await()
+            println("CompanyInfoViewModel: intradayInfoResult: ${intradayInfoResult.data}")
+
+            when(val result = companyInfoResult) {
                 is Resource.Success -> {
+                    println("CompanyInfoViewModel: intradayInfoResult result: ${result.data}")
+                    println("CompanyInfoViewModel: intradayInfoResult state: ${state}")
+
                     state = state.copy(
                         company = result.data,
                         isLoading = false,
@@ -49,9 +52,11 @@ class CompanyInfoViewModel @Inject constructor(
                 }
                 else -> Unit
             }
-
-            when(val result = intradayInfoResult.await()) {
+            when(val result = intradayInfoResult) {
                 is Resource.Success -> {
+                    println("CompanyInfoViewModel: intradayInfoResult result: ${result.data}")
+                    println("CompanyInfoViewModel: intradayInfoResult state: ${state}")
+
                     state = state.copy(
                         stockInfos = result.data ?: emptyList(),
                         isLoading = false,
@@ -70,4 +75,3 @@ class CompanyInfoViewModel @Inject constructor(
         }
     }
 }
-

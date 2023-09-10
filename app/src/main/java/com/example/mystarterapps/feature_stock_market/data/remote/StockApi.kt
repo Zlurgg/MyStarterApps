@@ -13,19 +13,19 @@ interface StockApi {
     ): ResponseBody
 
     @GET("query?function=TIME_SERIES_INTRADAY&interval=60min&datatype=csv")
-    suspend fun getIntraDayInfo(
+    suspend fun getIntradayInfo(
         @Query("symbol") symbol: String,
-        @Query("apiKey") apiKey: String = API_KEY
+        @Query("apikey") apiKey: String = API_KEY
     ): ResponseBody
 
     @GET("query?function=OVERVIEW")
     suspend fun getCompanyInfo(
         @Query("symbol") symbol: String,
-        @Query("apiKey") apiKey: String = API_KEY
+        @Query("apikey") apiKey: String = API_KEY
     ): CompanyInfoDto
 
     companion object {
-        const val API_KEY = "Q63Y9NX3TUF587NF"
+        const val API_KEY = "ZP326Y5KUT8YUV56"
         const val BASE_URL = "https://alphavantage.co"
     }
 }

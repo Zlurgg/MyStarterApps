@@ -5,7 +5,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.example.mystarterapps.feature_stock_market.presentation.company_listings.NavGraphs
+import com.example.mystarterapps.feature_stock_market.presentation.NavGraphs
 import com.example.mystarterapps.feature_stock_market.ui.theme.StockMarketAppTheme
 import com.ramcosta.composedestinations.DestinationsNavHost
 

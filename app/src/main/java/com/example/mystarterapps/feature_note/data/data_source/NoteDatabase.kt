@@ -5,11 +5,13 @@ import androidx.room.RoomDatabase
 import com.example.mystarterapps.feature_note.domain.model.Note
 
 @Database(
-    entities = [com.example.mystarterapps.feature_note.domain.model.Note::class],
-    version = 1
+    entities = [Note::class],
+    version = 1,
+    exportSchema = false
+
 )
 abstract class NoteDatabase: RoomDatabase() {
-    abstract val noteDao: com.example.mystarterapps.feature_note.data.data_source.NoteDao
+    abstract val noteDao: NoteDao
 
     companion object {
         const val DATABASE_NAME  = "notes_db"
