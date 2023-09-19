@@ -30,12 +30,8 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.derivedStateOf
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -51,6 +47,7 @@ import androidx.navigation.NavController
 import com.example.mystarterapps.R
 import com.example.mystarterapps.feature_note.domain.model.Note
 import com.example.mystarterapps.feature_note.presentation.add_edit_note.components.TransparentHintTextField
+import com.example.mystarterapps.feature_note.presentation.util.longToFormattedDateText
 import com.example.mystarterapps.feature_note.ui.theme.DarkGray
 import com.vanpra.composematerialdialogs.MaterialDialog
 import com.vanpra.composematerialdialogs.datetime.date.DatePickerDefaults
@@ -59,9 +56,7 @@ import com.vanpra.composematerialdialogs.rememberMaterialDialogState
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import java.time.LocalDate
-import java.time.LocalDateTime
-import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter
+import java.time.ZoneOffset
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -74,20 +69,10 @@ fun AddEditNoteScreen(
 ) {
     val titleState = viewModel.noteTitle.value
     val contentState = viewModel.noteContent.value
-
-    var pickedDate by remember {
-        mutableStateOf(LocalDate.now())
-    }
-    val formattedDate by remember {
-        derivedStateOf {
-            DateTimeFormatter
-                .ofPattern("MMM dd, yyyy")
-                .format(pickedDate)
-        }
-    }
+    val dateState = viewModel.noteDate.value
     val dateDialogState = rememberMaterialDialogState()
 
-    val noteBackgroundAnimatable = remember {
+    val noteBackgroundAnimatatable = remember {
         Animatable(
             Color(if (noteColor != -1) noteColor else viewModel.noteColor.value)
         )
@@ -127,7 +112,7 @@ fun AddEditNoteScreen(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(noteBackgroundAnimatable.value)
+                    .background(noteBackgroundAnimatatable.value)
                     .padding(16.dp)
             ) {
                 Row(
@@ -155,7 +140,7 @@ fun AddEditNoteScreen(
                                 )
                                 .clickable {
                                     scope.launch {
-                                        noteBackgroundAnimatable.animateTo(
+                                        noteBackgroundAnimatatable.animateTo(
                                             targetValue = Color(colorInt),
                                             animationSpec = tween(
                                                 durationMillis = 500
@@ -178,7 +163,7 @@ fun AddEditNoteScreen(
                     Text(
                         style = MaterialTheme.typography.headlineSmall,
                         color = DarkGray,
-                        text = formattedDate,
+                        text = longToFormattedDateText(dateState.date),
                     )
                     Icon(
                         painter = painterResource(id = R.drawable.ic_drop_down_arrow),
@@ -211,16 +196,19 @@ fun AddEditNoteScreen(
                                 !it.isAfter(LocalDate.now())
                             }
                         ) {
-                            pickedDate = it
+                            viewModel.onEvent(AddEditNoteEvent.EnteredDate(it.atStartOfDay().toEpochSecond(
+                                ZoneOffset.UTC)))
                         }
                     }
-                    println("date from date picker: $pickedDate")
-                    val zdt: LocalDateTime = pickedDate.atStartOfDay()
-
-
-                    viewModel.onEvent(AddEditNoteEvent.EnteredDate(zdt))
+                    if (dateState.date == 0L) {
+                        viewModel.onEvent(
+                            AddEditNoteEvent.EnteredDate(
+                                LocalDate.now().atStartOfDay().toEpochSecond(
+                                    ZoneOffset.UTC)
+                            )
+                        )
+                    }
                 }
-
                 Spacer(modifier = Modifier.height(16.dp))
 
                 // Title

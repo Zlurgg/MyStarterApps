@@ -85,9 +85,8 @@ class AddEditNoteViewModel @Inject constructor(
     fun onEvent(event: AddEditNoteEvent) {
         when (event) {
             is AddEditNoteEvent.EnteredDate -> {
-                println("onEvent date: ${event.date.toEpochSecond(ZoneOffset.UTC)}")
                 _noteDate.value = noteDate.value.copy(
-                    date = event.date.toEpochSecond(ZoneOffset.UTC)
+                    date = event.date
                 )
             }
 
