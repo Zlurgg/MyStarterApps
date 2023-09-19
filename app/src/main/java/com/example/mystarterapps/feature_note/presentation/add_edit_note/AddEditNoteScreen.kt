@@ -1,7 +1,6 @@
 package com.example.mystarterapps.feature_note.presentation.add_edit_note
 
 import android.annotation.SuppressLint
-import androidx.annotation.RequiresApi
 import androidx.compose.animation.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
@@ -60,11 +59,11 @@ import com.vanpra.composematerialdialogs.rememberMaterialDialogState
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import java.time.LocalDate
-import java.time.LocalTime
-import java.time.ZoneOffset
+import java.time.LocalDateTime
+import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
-@RequiresApi(34)
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -212,15 +211,16 @@ fun AddEditNoteScreen(
                                 !it.isAfter(LocalDate.now())
                             }
                         ) {
-                            viewModel.onEvent(
-                                AddEditNoteEvent.EnteredDate(
-                                    it
-                                )
-                            )
                             pickedDate = it
                         }
                     }
+                    println("date from date picker: $pickedDate")
+                    val zdt: LocalDateTime = pickedDate.atStartOfDay()
+
+
+                    viewModel.onEvent(AddEditNoteEvent.EnteredDate(zdt))
                 }
+
                 Spacer(modifier = Modifier.height(16.dp))
 
                 // Title

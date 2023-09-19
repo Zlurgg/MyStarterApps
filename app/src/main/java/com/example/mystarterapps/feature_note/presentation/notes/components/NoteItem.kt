@@ -27,11 +27,9 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.ColorUtils
 import com.example.mystarterapps.feature_note.domain.model.Note
-import java.text.DateFormat
-import java.time.LocalDateTime
-import java.time.ZoneOffset
+import java.time.Instant
+import java.time.ZoneId
 import java.time.format.DateTimeFormatter
-import java.util.Locale
 
 
 @Composable
@@ -79,8 +77,14 @@ fun NoteItem(
                 .padding(16.dp)
                 .padding(end = 32.dp)
         ) {
+            val dt = Instant.ofEpochSecond(note.dateStamp)
+                .atZone(ZoneId.systemDefault())
+                .toLocalDateTime()
+            val formatter = DateTimeFormatter.ofPattern("dd MMM, yyyy")
+            val date = formatter.format(dt)
+            
             Text(
-                text = note.dateStamp.toDateString(),
+                text = date,
                 style = MaterialTheme.typography.headlineSmall,
                 color = MaterialTheme.colorScheme.onSurface,
                 overflow = TextOverflow.Ellipsis
@@ -111,9 +115,4 @@ fun NoteItem(
             )
         }
     }
-}
-
-fun Long.toDateString(dateFormat: Int =  DateFormat.MEDIUM): String {
-    val df = DateFormat.getDateInstance(dateFormat, Locale.getDefault())
-    return df.format(this)
 }

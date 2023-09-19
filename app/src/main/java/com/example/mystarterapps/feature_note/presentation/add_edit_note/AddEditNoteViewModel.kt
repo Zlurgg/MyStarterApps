@@ -36,7 +36,6 @@ class AddEditNoteViewModel @Inject constructor(
     )
     val noteDate: State<NoteDateFieldState> = _noteDate
 
-
     private val _noteTitle = mutableStateOf(
         NoteTextFieldState(
             hint = "Enter title..."
@@ -86,8 +85,9 @@ class AddEditNoteViewModel @Inject constructor(
     fun onEvent(event: AddEditNoteEvent) {
         when (event) {
             is AddEditNoteEvent.EnteredDate -> {
+                println("onEvent date: ${event.date.toEpochSecond(ZoneOffset.UTC)}")
                 _noteDate.value = noteDate.value.copy(
-                    date = event.date.toEpochDay()
+                    date = event.date.toEpochSecond(ZoneOffset.UTC)
                 )
             }
 
@@ -124,6 +124,8 @@ class AddEditNoteViewModel @Inject constructor(
             is AddEditNoteEvent.SaveNote -> {
                 viewModelScope.launch {
                     try {
+                        println("AddEditNoteEvent Save: ${noteDate.value.date}")
+
                         noteUseCases.addNote(
                             Note(
                                 title = noteTitle.value.text,
