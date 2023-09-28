@@ -8,9 +8,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.mystarterapps.feature_note.presentation.notes.components.DefaultRadioButton
-import com.plcoding.cleanarchitecturenoteapp.feature_note.domain.util.NoteOrder
-import com.plcoding.cleanarchitecturenoteapp.feature_note.domain.util.OrderType
+import com.example.mystarterapps.feature_note.domain.util.NoteOrder
+import com.example.mystarterapps.feature_note.domain.util.OrderType
 
 @Composable
 fun OrderSection(

@@ -39,7 +39,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.plcoding.cleanarchitecturenoteapp.feature_note.presentation.notes.components.NoteItem
+import com.example.mystarterapps.feature_note.presentation.notes.components.NoteItem
 import com.example.mystarterapps.feature_note.presentation.notes.components.OrderSection
 import com.example.mystarterapps.feature_note.presentation.util.Screen
 import kotlinx.coroutines.launch

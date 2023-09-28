@@ -4,9 +4,9 @@ import com.example.mystarterapps.feature_note.domain.model.Note
 import com.example.mystarterapps.feature_note.domain.repository.NoteRepository
 
 class GetNote(
-    private val repository: com.example.mystarterapps.feature_note.domain.repository.NoteRepository
+    private val repository: NoteRepository
 ) {
-    suspend operator fun invoke(id: Int): com.example.mystarterapps.feature_note.domain.model.Note? {
+    suspend operator fun invoke(id: Int): Note? {
         return repository.getNoteById(id)
     }
 }

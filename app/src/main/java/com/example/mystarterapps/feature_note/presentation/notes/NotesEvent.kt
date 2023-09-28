@@ -1,7 +1,6 @@
 package com.example.mystarterapps.feature_note.presentation.notes
 
-import com.example.mystarterapps.feature_note.domain.model.Note
-import com.plcoding.cleanarchitecturenoteapp.feature_note.domain.util.NoteOrder
+import com.example.mystarterapps.feature_note.domain.util.NoteOrder
 
 sealed class NotesEvent {
     data class Order(val noteOrder: NoteOrder): NotesEvent()

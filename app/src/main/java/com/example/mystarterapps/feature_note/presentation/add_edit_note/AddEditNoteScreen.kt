@@ -27,22 +27,37 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.DialogProperties
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.example.mystarterapps.R
 import com.example.mystarterapps.feature_note.domain.model.Note
 import com.example.mystarterapps.feature_note.presentation.add_edit_note.components.TransparentHintTextField
+import com.example.mystarterapps.feature_note.presentation.util.longToFormattedDateText
+import com.example.mystarterapps.feature_note.ui.theme.DarkGray
+import com.vanpra.composematerialdialogs.MaterialDialog
+import com.vanpra.composematerialdialogs.datetime.date.DatePickerDefaults
+import com.vanpra.composematerialdialogs.datetime.date.datepicker
+import com.vanpra.composematerialdialogs.rememberMaterialDialogState
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import java.time.LocalDate
+import java.time.ZoneOffset
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -54,11 +69,12 @@ fun AddEditNoteScreen(
 ) {
     val titleState = viewModel.noteTitle.value
     val contentState = viewModel.noteContent.value
+    val dateState = viewModel.noteDate.value
+    val dateDialogState = rememberMaterialDialogState()
 
-
-    val noteBackgroundAnimatable = remember {
+    val noteBackgroundAnimatatable = remember {
         Animatable(
-            Color(if(noteColor != -1) noteColor else viewModel.noteColor.value)
+            Color(if (noteColor != -1) noteColor else viewModel.noteColor.value)
         )
     }
     val snackbarHostState = remember { SnackbarHostState() }
@@ -66,12 +82,13 @@ fun AddEditNoteScreen(
 
     LaunchedEffect(key1 = true) {
         viewModel.eventFlow.collectLatest { event ->
-            when(event) {
+            when (event) {
                 is AddEditNoteViewModel.UiEvent.ShowSnackbar -> {
                     snackbarHostState.showSnackbar(
                         message = event.message
                     )
                 }
+
                 is AddEditNoteViewModel.UiEvent.SaveNote -> {
                     navController.navigateUp()
                 }
@@ -81,10 +98,11 @@ fun AddEditNoteScreen(
 
     Scaffold(
         floatingActionButton = {
-            FloatingActionButton(onClick = {
-                viewModel.onEvent(AddEditNoteEvent.SaveNote)
-            },
-            modifier = Modifier.background(MaterialTheme.colorScheme.primary)
+            FloatingActionButton(
+                onClick = {
+                    viewModel.onEvent(AddEditNoteEvent.SaveNote)
+                },
+                modifier = Modifier.background(MaterialTheme.colorScheme.primary)
             ) {
                 Icon(imageVector = Icons.Default.Check, contentDescription = "Save note")
             }
@@ -94,7 +112,7 @@ fun AddEditNoteScreen(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(noteBackgroundAnimatable.value)
+                    .background(noteBackgroundAnimatatable.value)
                     .padding(16.dp)
             ) {
                 Row(
@@ -122,7 +140,7 @@ fun AddEditNoteScreen(
                                 )
                                 .clickable {
                                     scope.launch {
-                                        noteBackgroundAnimatable.animateTo(
+                                        noteBackgroundAnimatatable.animateTo(
                                             targetValue = Color(colorInt),
                                             animationSpec = tween(
                                                 durationMillis = 500
@@ -135,6 +153,65 @@ fun AddEditNoteScreen(
                     }
                 }
                 Spacer(modifier = Modifier.height(16.dp))
+
+                // Date Picker
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                ) {
+                    Text(
+                        style = MaterialTheme.typography.headlineSmall,
+                        color = DarkGray,
+                        text = longToFormattedDateText(dateState.date),
+                    )
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_drop_down_arrow),
+                        tint = DarkGray,
+                        contentDescription = "Date picker dropdown button",
+                        modifier = Modifier
+                            .clickable(
+                                onClick = { dateDialogState.show() },
+                                role = Role.Button,
+                            )
+                    )
+                    MaterialDialog(
+                        dialogState = dateDialogState,
+                        properties = DialogProperties(
+                            dismissOnBackPress = true
+                        ),
+                        backgroundColor = MaterialTheme.colorScheme.onBackground,
+                        elevation = 10.dp,
+                        onCloseRequest = {},
+                        buttons = {
+                            positiveButton(text = "Ok")
+                            negativeButton(text = "Cancel")
+                        }
+                    ) {
+                        datepicker(
+                            initialDate = LocalDate.now(),
+                            title = "Pick a date",
+                            colors = DatePickerDefaults.colors(),
+                            allowedDateValidator = {
+                                !it.isAfter(LocalDate.now())
+                            }
+                        ) {
+                            viewModel.onEvent(AddEditNoteEvent.EnteredDate(it.atStartOfDay().toEpochSecond(
+                                ZoneOffset.UTC)))
+                        }
+                    }
+                    if (dateState.date == 0L) {
+                        viewModel.onEvent(
+                            AddEditNoteEvent.EnteredDate(
+                                LocalDate.now().atStartOfDay().toEpochSecond(
+                                    ZoneOffset.UTC)
+                            )
+                        )
+                    }
+                }
+                Spacer(modifier = Modifier.height(16.dp))
+
+                // Title
                 TransparentHintTextField(
                     text = titleState.text,
                     hint = titleState.hint,
@@ -149,6 +226,8 @@ fun AddEditNoteScreen(
                     textStyle = MaterialTheme.typography.headlineSmall
                 )
                 Spacer(modifier = Modifier.height(16.dp))
+
+                // Content
                 TransparentHintTextField(
                     text = contentState.text,
                     hint = contentState.hint,

@@ -6,16 +6,19 @@ import com.example.mystarterapps.feature_note.domain.repository.NoteRepository
 import kotlin.jvm.Throws
 
 class AddNote(
-    private val repository: com.example.mystarterapps.feature_note.domain.repository.NoteRepository
+    private val repository: NoteRepository
 ) {
 
-    @Throws(com.example.mystarterapps.feature_note.domain.model.InvalidNoteException::class)
-    suspend operator fun invoke(note: com.example.mystarterapps.feature_note.domain.model.Note) {
+    @Throws(InvalidNoteException::class)
+    suspend operator fun invoke(note: Note) {
+        if (note.dateStamp == 0L) {
+            throw InvalidNoteException("The date of the note must be valid.")
+        }
         if (note.title.isBlank()) {
-            throw com.example.mystarterapps.feature_note.domain.model.InvalidNoteException("The title of the note can't be empty.")
+            throw InvalidNoteException("The title of the note can't be empty.")
         }
         if (note.content.isBlank()) {
-            throw com.example.mystarterapps.feature_note.domain.model.InvalidNoteException("The title of the content can't be empty.")
+            throw InvalidNoteException("The title of the content can't be empty.")
         }
         repository.insertNote(note)
     }
