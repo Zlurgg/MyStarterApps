@@ -6,6 +6,7 @@ plugins {
     id ("kotlin-parcelize")
     id("com.google.devtools.ksp")
     id ("dagger.hilt.android.plugin")
+    id("com.google.gms.google-services")
 }
 
 kotlin {
@@ -139,5 +140,9 @@ dependencies {
 
     //Date Picker
     implementation("io.github.vanpra.compose-material-dialogs:datetime:0.9.0")
+
+    //Firebase
+    implementation("com.google.firebase:firebase-auth-ktx:22.1.2")
+    implementation("androidx.credentials:credentials-play-services-auth:1.2.0-rc01")
 
 }

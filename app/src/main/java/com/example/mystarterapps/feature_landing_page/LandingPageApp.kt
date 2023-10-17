@@ -7,6 +7,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.mystarterapps.feature_calculator.CalculatorApp
 import com.example.mystarterapps.feature_cryptocurrency.CryptocurrencyApp
 import com.example.mystarterapps.feature_dictionary.DictionaryApp
+import com.example.mystarterapps.feature_firebase_login.FirebaseLoginApp
 import com.example.mystarterapps.feature_image_swiper.presentation.ImageSwiperApp
 import com.example.mystarterapps.feature_landing_page.presentation.LandingPageScreen
 import com.example.mystarterapps.feature_meditation.MeditationApp
@@ -24,13 +25,16 @@ fun LandingPageApp(
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = "landing_page"
+        startDestination = "landing page"
     ) {
-        composable("landing_page") {
+        composable("landing page") {
             LandingPageScreen(navController)
         }
         composable("dictionary") {
             DictionaryApp()
+        }
+        composable("firebase login") {
+            FirebaseLoginApp()
         }
         composable("cryptocurrency") {
             CryptocurrencyApp()
