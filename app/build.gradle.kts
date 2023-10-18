@@ -143,6 +143,8 @@ dependencies {
 
     //Firebase
     implementation("com.google.firebase:firebase-auth-ktx:22.1.2")
-    implementation("androidx.credentials:credentials-play-services-auth:1.2.0-rc01")
+    implementation("com.google.android.gms:play-services-auth:20.7.0")
+    implementation ("androidx.lifecycle:lifecycle-runtime-compose:2.6.2")
+    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
 
 }

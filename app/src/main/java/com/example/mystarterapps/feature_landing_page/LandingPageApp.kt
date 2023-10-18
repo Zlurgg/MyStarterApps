@@ -1,5 +1,6 @@
 package com.example.mystarterapps.feature_landing_page
 
+import FirebaseLoginApp
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -7,7 +8,6 @@ import androidx.navigation.compose.rememberNavController
 import com.example.mystarterapps.feature_calculator.CalculatorApp
 import com.example.mystarterapps.feature_cryptocurrency.CryptocurrencyApp
 import com.example.mystarterapps.feature_dictionary.DictionaryApp
-import com.example.mystarterapps.feature_firebase_login.FirebaseLoginApp
 import com.example.mystarterapps.feature_image_swiper.presentation.ImageSwiperApp
 import com.example.mystarterapps.feature_landing_page.presentation.LandingPageScreen
 import com.example.mystarterapps.feature_meditation.MeditationApp
