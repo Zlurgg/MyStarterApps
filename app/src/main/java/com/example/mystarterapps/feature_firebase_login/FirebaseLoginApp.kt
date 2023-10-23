@@ -7,9 +7,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
@@ -19,26 +24,32 @@ import com.example.mystarterapps.feature_firebase_login.presentation.sign_in.Goo
 import com.example.mystarterapps.feature_firebase_login.presentation.sign_in.SignInScreen
 import com.example.mystarterapps.feature_firebase_login.presentation.sign_in.SignInViewModel
 import com.google.android.gms.auth.api.identity.Identity
+import kotlinx.coroutines.launch
+import com.example.mystarterapps.feature_firebase_login.presentation.profile.ProfileScreen
+import com.example.mystarterapps.feature_firebase_login.presentation.sign_in.SignInState
 
 @Composable
-fun FirebaseLoginApp() {
+fun FirebaseLoginApp(
+) {
     val applicationContext = LocalContext.current
     val googleAuthUiClient by lazy {
         GoogleAuthUiClient(
             context = applicationContext,
             oneTapClient = Identity.getSignInClient(applicationContext)
         )
+
     }
+    val scope = rememberCoroutineScope()
+    val viewModel: SignInViewModel = viewModel()
+    val state by viewModel.state.collectAsStateWithLifecycle()
 
     Surface(
         modifier = Modifier.fillMaxSize(),
     ) {
         val navController = rememberNavController()
+
         NavHost(navController = navController, startDestination = "sign_in") {
             composable("sign_in") {
-                val viewModel = viewModel<SignInViewModel>()
-                val state by viewModel.state.collectAsStateWithLifecycle()
-
                 LaunchedEffect(key1 = Unit) {
                     if (googleAuthUiClient.getSignedInUser() != null) {
                         navController.navigate("profile")
@@ -48,13 +59,11 @@ fun FirebaseLoginApp() {
                 val launcher = rememberLauncherForActivityResult(
                     contract = ActivityResultContracts.StartIntentSenderForResult(),
                     onResult = { result ->
-                        if (result.resultCode == RESULT_OK) {
-//                            lifecycleScope.launch {
-//                                val signInResult = googleAuthUiClient.signInWithIntent(
-//                                    intent = result.data ?: return@launch
-//                                )
-//                                viewModel.onSignInResult(signInResult)
-//                            }
+                        scope.launch {
+                            val signInResult = googleAuthUiClient.signInWithIntent(
+                                intent = result.data ?: return@launch
+                            )
+                            viewModel.onSignInResult(signInResult)
                         }
                     }
                 )
@@ -70,39 +79,46 @@ fun FirebaseLoginApp() {
                         navController.navigate("profile")
                         viewModel.resetState()
                     }
+//                    else {
+//                        Toast.makeText(
+//                            applicationContext,
+//                            "Sign in not successful: ${state.signInError}",
+//                            Toast.LENGTH_LONG
+//                        ).show()
+//                    }
                 }
 
                 SignInScreen(
                     state = state,
                     onSignInClick = {
-//                        lifecycleScope.launch {
-//                            val signInIntentSender = googleAuthUiClient.signIn()
-//                            launcher.launch(
-//                                IntentSenderRequest.Builder(
-//                                    signInIntentSender ?: return@launch
-//                                ).build()
-//                            )
-//                        }
+                        scope.launch {
+                            val signInIntentSender = googleAuthUiClient.signIn()
+                            launcher.launch(
+                                IntentSenderRequest.Builder(
+                                    signInIntentSender ?: return@launch
+                                ).build()
+                            )
+                        }
                     }
                 )
             }
-//            composable("profile") {
-//                ProfileScreen(
-//                    userData = googleAuthUiClient.getSignedInUser(),
-//                    onSignOut = {
-//                        lifecycleScope.launch {
-//                            googleAuthUiClient.signOut()
-//                            Toast.makeText(
-//                                applicationContext,
-//                                "Signed out",
-//                                Toast.LENGTH_LONG
-//                            ).show()
-//
-//                            navController.popBackStack()
-//                        }
-//                    }
-//                )
-//            }
+            composable("profile") {
+                ProfileScreen(
+                    userData = googleAuthUiClient.getSignedInUser(),
+                    onSignOut = {
+                        scope.launch {
+                            googleAuthUiClient.signOut()
+                            Toast.makeText(
+                                applicationContext,
+                                "Signed out",
+                                Toast.LENGTH_LONG
+                            ).show()
+
+                            navController.popBackStack()
+                        }
+                    }
+                )
+            }
         }
     }
 }

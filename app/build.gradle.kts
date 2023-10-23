@@ -86,14 +86,15 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
     implementation("androidx.lifecycle:lifecycle-common-java8:2.6.2")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
-    implementation("androidx.activity:activity-compose:1.8.0-beta01")
+    implementation ("androidx.lifecycle:lifecycle-runtime-compose:2.6.2")
+    implementation("androidx.activity:activity-compose:1.8.0")
 
     //UI
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
-    implementation("androidx.compose.runtime:runtime-livedata:1.5.1")
+    implementation("androidx.compose.runtime:runtime-livedata:1.5.3")
 
     //Testing
     testImplementation("junit:junit:4.13.2")
@@ -105,7 +106,7 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
     //Nav
-    implementation("androidx.navigation:navigation-compose:2.7.2")
+    implementation("androidx.navigation:navigation-compose:2.7.4")
 
     //Compose Nav
     implementation("io.github.raamcosta.compose-destinations:core:1.1.2-beta")
@@ -129,22 +130,21 @@ dependencies {
     // Compose dependencies extended
     implementation("androidx.paging:paging-compose:3.2.1")
     implementation("com.google.accompanist:accompanist-swiperefresh:0.24.2-alpha")
-    implementation("androidx.compose.material:material-icons-extended:1.5.1")
+    implementation("androidx.compose.material:material-icons-extended:1.5.3")
     implementation("com.google.accompanist:accompanist-flowlayout:0.17.0")
 
     // OpenCSV
     implementation ("com.opencsv:opencsv:5.5.2")
 
     // Coil
-    implementation("io.coil-kt:coil-compose:2.2.2")
+    implementation("io.coil-kt:coil-compose:2.3.0")
 
     //Date Picker
     implementation("io.github.vanpra.compose-material-dialogs:datetime:0.9.0")
 
     //Firebase
-    implementation("com.google.firebase:firebase-auth-ktx:22.1.2")
+    implementation("com.google.firebase:firebase-auth:22.2.0")
     implementation("com.google.android.gms:play-services-auth:20.7.0")
-    implementation ("androidx.lifecycle:lifecycle-runtime-compose:2.6.2")
-    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+
 
 }

@@ -24,9 +24,9 @@ class GoogleAuthUiClient(
             oneTapClient.beginSignIn(
                 buildSignInRequest()
             ).await()
-        } catch (e: Exception) {
+        } catch(e: Exception) {
             e.printStackTrace()
-            if (e is CancellationException) throw e
+            if(e is CancellationException) throw e
             null
         }
         return result?.pendingIntent?.intentSender
@@ -35,9 +35,9 @@ class GoogleAuthUiClient(
     suspend fun signInWithIntent(intent: Intent): SignInResult {
         val credential = oneTapClient.getSignInCredentialFromIntent(intent)
         val googleIdToken = credential.googleIdToken
-        val googleCredential = GoogleAuthProvider.getCredential(googleIdToken, null)
+        val googleCredentials = GoogleAuthProvider.getCredential(googleIdToken, null)
         return try {
-            val user = auth.signInWithCredential(googleCredential).await().user
+            val user = auth.signInWithCredential(googleCredentials).await().user
             SignInResult(
                 data = user?.run {
                     UserData(
@@ -48,9 +48,9 @@ class GoogleAuthUiClient(
                 },
                 errorMessage = null
             )
-        } catch (e: Exception) {
+        } catch(e: Exception) {
             e.printStackTrace()
-            if (e is CancellationException) throw e
+            if(e is CancellationException) throw e
             SignInResult(
                 data = null,
                 errorMessage = e.message
@@ -62,9 +62,9 @@ class GoogleAuthUiClient(
         try {
             oneTapClient.signOut().await()
             auth.signOut()
-        } catch (e: Exception) {
+        } catch(e: Exception) {
             e.printStackTrace()
-            if (e is CancellationException) throw e
+            if(e is CancellationException) throw e
         }
     }
 
@@ -72,12 +72,12 @@ class GoogleAuthUiClient(
         UserData(
             userId = uid,
             username = displayName,
-            profilePictureUrl = photoUrl.toString()
+            profilePictureUrl = photoUrl?.toString()
         )
     }
 
     private fun buildSignInRequest(): BeginSignInRequest {
-        return BeginSignInRequest.builder()
+        return BeginSignInRequest.Builder()
             .setGoogleIdTokenRequestOptions(
                 GoogleIdTokenRequestOptions.builder()
                     .setSupported(true)
