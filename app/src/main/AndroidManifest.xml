@@ -14,9 +14,13 @@
 
         android:name=".feature_room.data.EntryApplication"
         android:name=".feature_dagger_hilt_vm.MyApp"
+        android:name=".feature_notification.NotificationApp"
 
         MainActivity also needs changing to the feature package one below
      -->
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:name=".MyStarterAppsApplication"
