@@ -15,4 +15,13 @@ android:name=".feature_room.data.EntryApplication"
 android:name=".feature_dagger_hilt_vm.MyApp"  
 
 MainActivity also needs changing for running these each feature package has its own.  
-Feature_room will need the dagger hilt application commenting out to use its own Application
+Feature_room will need the dagger hilt application commenting out to use its own Application  
+
+## Features: 
+- Jetpack Compose  
+- Kotlin  
+- MVVM  
+- Dagger Hilt  
+- Retrofit  
+- Room  
+- Offline Capability  
